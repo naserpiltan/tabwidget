@@ -14,7 +14,10 @@
 #include <QMap>
 #include <QBitmap>
 //#include <form1.h>
-
+#include <QStandardItemModel>
+#include <QTableWidget>
+#include <QTableWidgetItem>
+#include <QDebug>
 
 using namespace cv;
 
@@ -51,6 +54,10 @@ private slots:
 
     void on_pushButton_8_clicked();
 
+    void on_pushButton_13_clicked();
+
+    void on_tableWidget_cellPressed(int row, int column);
+
 private:
     Ui::Form *ui;
     int yellow = 255;
@@ -60,6 +67,9 @@ private:
     // Form1 form1;
     Form1 *form1;
     bool hazf = false;
+    int tabel_num  = 0;
+
+
 
 
 };

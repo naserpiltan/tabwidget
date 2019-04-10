@@ -26,10 +26,10 @@
   <widget class="QTabWidget" name="tabWidget">
    <property name="geometry">
     <rect>
-     <x>0</x>
-     <y>0</y>
+     <x>10</x>
+     <y>10</y>
      <width>1321</width>
-     <height>691</height>
+     <height>718</height>
     </rect>
    </property>
    <property name="font">
@@ -48,7 +48,7 @@ QTabBar::tab { height: 100px; width: 100px; }</string>
     <enum>QTabWidget::Triangular</enum>
    </property>
    <property name="currentIndex">
-    <number>1</number>
+    <number>2</number>
    </property>
    <property name="iconSize">
     <size>
@@ -783,7 +783,7 @@ border-color: black;
        <x>390</x>
        <y>410</y>
        <width>111</width>
-       <height>200</height>
+       <height>208</height>
       </rect>
      </property>
      <property name="font">
@@ -821,7 +821,7 @@ border-color: black;
        <x>500</x>
        <y>410</y>
        <width>110</width>
-       <height>201</height>
+       <height>210</height>
       </rect>
      </property>
      <property name="font">
@@ -932,7 +932,7 @@ border-color: black;
        <x>808</x>
        <y>403</y>
        <width>111</width>
-       <height>200</height>
+       <height>214</height>
       </rect>
      </property>
      <property name="font">
@@ -1005,7 +1005,7 @@ border-color: black;
        <x>918</x>
        <y>403</y>
        <width>111</width>
-       <height>201</height>
+       <height>213</height>
       </rect>
      </property>
      <property name="font">
@@ -1183,6 +1183,92 @@ border-style: solid;
 border-color: black;
 border-width: 5px;
 border-radius: 10px;</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="tab">
+    <attribute name="title">
+     <string>Page</string>
+    </attribute>
+    <widget class="QPushButton" name="pushButton_13">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>30</y>
+       <width>311</width>
+       <height>121</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>17</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton:pressed {
+   background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0  rgb(100, 0, 0), stop: 1 rgb(255, 255, 255));
+border-style: solid;
+border-color: black;
+border-width: 2px;
+border-radius: 20px;;     
+}
+QPushButton{
+  background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0  rgb(255, 0, 0), stop: 1 rgb(255, 255,255));
+border-style: solid;
+border-color: black;
+border-width: 2px;
+border-radius: 20px;
+}
+
+</string>
+     </property>
+     <property name="text">
+      <string>خروج </string>
+     </property>
+     <property name="checkable">
+      <bool>false</bool>
+     </property>
+     <property name="checked">
+      <bool>false</bool>
+     </property>
+     <property name="autoDefault">
+      <bool>false</bool>
+     </property>
+     <property name="default">
+      <bool>false</bool>
+     </property>
+     <property name="flat">
+      <bool>false</bool>
+     </property>
+    </widget>
+    <widget class="QTableWidget" name="tableWidget">
+     <property name="geometry">
+      <rect>
+       <x>575</x>
+       <y>51</y>
+       <width>731</width>
+       <height>361</height>
+      </rect>
+     </property>
+     <property name="tabletTracking">
+      <bool>true</bool>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(238, 238, 236);</string>
+     </property>
+     <property name="verticalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOn</enum>
+     </property>
+     <property name="horizontalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOn</enum>
+     </property>
+     <property name="sizeAdjustPolicy">
+      <enum>QAbstractScrollArea::AdjustToContents</enum>
+     </property>
+     <property name="autoScrollMargin">
+      <number>100</number>
      </property>
     </widget>
    </widget>

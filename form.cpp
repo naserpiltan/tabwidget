@@ -9,12 +9,8 @@ Form::Form(QWidget *parent) :
 {
 
     ui->setupUi(this);
-    ui->tabWidget->setCurrentIndex(0);
-    QPixmap bkgnd("/home/piltan/Desktop/backs/carbon-fiber-free-vector.jpg");
-    bkgnd = bkgnd.scaled(this->size());
-    QPalette palette;
-    palette.setBrush(QPalette::Background, bkgnd);
-    this->setPalette(palette);
+    ui->tabWidget->setCurrentIndex(2);
+
 
     // ui->pushButton->setFixedHeight(200);
     //  ui->pushButton->setFixedWidth(200);
@@ -108,6 +104,9 @@ Form::Form(QWidget *parent) :
     painter10.setBrush(Qt::color1);
     painter10.drawEllipse(QPoint(0,100),100,100);
     ui->pushButton_29->setMask(map10);
+    ui->tableWidget->setRowCount(1);
+
+
 
 }
 
@@ -243,3 +242,86 @@ void Form::on_pushButton_8_clicked() //hazfe tartibi
 }
 
 //
+
+void Form::on_pushButton_13_clicked()
+{
+    /* QHeaderView *verticalHeader = ui->tableView->verticalHeader();
+    verticalHeader->setSectionResizeMode(QHeaderView::Fixed);
+    verticalHeader->setDefaultSectionSize(100);
+
+    QImage image("/media/piltan/9EE80C20E80BF4F5/keras-multi-label/plot.png");
+
+
+    QHeaderView *horizontalHeader = ui->tableView->horizontalHeader();
+    horizontalHeader->setSectionResizeMode(QHeaderView::Fixed);
+    horizontalHeader->setDefaultSectionSize(1000);
+    horizontalHeader->setStretchLastSection(true);
+    QStandardItemModel *model = new QStandardItemModel(4,1);
+
+    QStandardItem *item = new QStandardItem();
+
+    item->setData(QVariant(QPixmap::fromImage(image)), Qt::DecorationRole);
+
+    ui->tableView->setEditTriggers(QAbstractItemView::NoEditTriggers);  // editing is not allowed
+
+    item->setData(QVariant(QPixmap::fromImage(image)), Qt::DecorationRole);
+    model->setItem(tabel_num, 0, item);
+    ui->tableView->setModel(model);
+
+
+    //  model->setItem(1, 0, item);
+
+*/
+    QLabel *lbl = new QLabel;
+    lbl->setGeometry(0,0,100,80);
+    Mat im = imread("/home/piltan/Pictures/Selection_003.png");
+    cvtColor(im,im,COLOR_BGR2RGB);
+    cv::resize(im,im,Size(200,80));
+    QImage qimg = QImage(im.data,im.cols,im.rows,im.step,QImage::Format_RGB888);
+    QPixmap pixm =QPixmap::fromImage(qimg);
+    lbl->setPixmap(pixm);
+    lbl->setScaledContents(true);
+
+    QHeaderView *horizontalHeader = ui->tableWidget->horizontalHeader();
+    horizontalHeader->setSectionResizeMode(QHeaderView::Fixed);
+    horizontalHeader->setDefaultSectionSize(im.cols);
+    //horizontalHeader->setStretchLastSection(true);
+
+    QHeaderView *verticalHeader = ui->tableWidget->verticalHeader();
+    verticalHeader->setSectionResizeMode(QHeaderView::Fixed);
+    verticalHeader->setDefaultSectionSize(im.rows);
+    //  ui->tableWidget->scrollToItem(ui->tableWidget->item(tabel_num,0),QAbstractItemView::ScrollHint::EnsureVisible);
+    ui->tableWidget->setColumnCount(1);
+    QString strrh = "salan";
+    ui->tableWidget->setCellWidget(tabel_num,0,strrh);
+    //  ui->tableWidget->scrollTo(ui->tableWidget->indexAt(QPoint(tabel_num*100,0)));
+
+    tabel_num++;
+    ui->tableWidget->setRowCount(tabel_num);
+    ui->tableWidget->insertRow(tabel_num);
+    ui->tableWidget->scrollToBottom();
+    if (tabel_num == 13)
+    {
+        ui->tableWidget->clear();
+        ui->tableWidget->setRowCount(1);
+        tabel_num = 0;
+    }
+
+}
+
+void Form::on_tableWidget_cellPressed(int row, int column)
+{
+    QLabel *label;
+    label = qobject_cast<QLabel*> (ui->tableWidget->cellWidget(row,0));
+    const QPixmap *pix = label->pixmap();
+    QImage img = pix->toImage();
+    img = img.convertToFormat(QImage::Format_RGB888);
+    img.save("/home/piltan/Desktop/1.jpg");
+    cv::Mat mat(img.height(), img.width(), CV_8UC3,img.bits());
+    Mat ff;
+    cvtColor(mat,ff,COLOR_RGB2BGR);
+    imwrite("/home/piltan/Desktop/112.jpg",ff);
+
+
+
+}
